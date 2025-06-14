@@ -371,9 +371,44 @@ console.log(convertTo12Hour("12:00")); // 12:00 PM
 console.log(convertTo12Hour("18:30")); // 6:30 PM
 
 
-## 15. ![alt text](image.png)
+## 15. ![alt text](image.png) 
+
+### solution - 
+
+function changeExtension(filename) {
+  // Find the last dot to extract extension
+  const lastDotIndex = filename.lastIndexOf(".");
+
+  // If no dot found → No extension present
+  if (lastDotIndex === -1) {
+    return filename + ".txt";
+  }
+
+  const name = filename.slice(0, lastDotIndex);
+  const ext = filename.slice(lastDotIndex + 1).toLowerCase();
+
+  // Apply conversion rules
+  if (ext === "txt") return name + ".doc";
+  if (ext === "doc" || ext === "html") return name + ".pdf";
+
+  // Other extensions → .txt
+  return name + ".txt";
+}
+
+
+const files = [
+  "Hello.txt",
+  "Axelor.doc",
+  "X.html",
+  "Test",
+  "Test.jpg",
+  "Test.file.jpg"
+];
+
+files.forEach(file => {
+  console.log(`${file} => ${changeExtension(file)}`);
+});
 
 
 
 
-# javascript_assignments
