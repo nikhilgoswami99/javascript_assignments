@@ -409,6 +409,201 @@ files.forEach(file => {
   console.log(`${file} => ${changeExtension(file)}`);
 });
 
+## 16. Tell me the output and how closure is helping and explain about closures.
+
+![alt text](image-1.png)
+
+### solution - 
+
+a is declared inside function x().
+
+Function y() is also defined inside x(), and it uses variable a.
+
+When y() is called, it remembers the value of a even though a is not declared inside y() — this is exactly what a closure is.
+
+
+A closure is when a function remembers variables from the place where it was defined, even after that outer function has finished running.
+
+### output - 
+
+output is 7
+
+## 17. Tell me the output: Also tell me the logic why it is not printing 1,2,3,4,5. Hint: Explore about event loop and async programming.
+
+![alt text](image-2.png)
+
+### solution - 
+
+The variable i is declared with let i = 0, and then reused in the for loop.
+
+setTimeout is asynchronous, meaning the callback is scheduled to run after the loop has already completed.
+
+By the time any of the setTimeout callbacks execute, the for loop has completed, and i has reached 6.
+
+All the arrow functions reference the same i, which is now 6.
+
+### output - 
+
+6
+6
+6
+6
+6
+
+## 18. What will be the output of the given JavaScript code? How can you modify the code to achieve the desired output using the `let` keyword?I want my output to be 1,2,3,4,5 rather than printing “6” five times, so make the changes also provide the logic behind it.
+
+![alt text](image-3.png)
+
+### solution - 
+
+var is function-scoped, not block-scoped.
+
+All setTimeout callbacks share the same i variable.
+
+By the time the setTimeout functions run (after the loop finishes), i is 6.
+
+after using let keyword in place of var - 
+
+function example() {
+  for (let i = 1; i <= 5; i++) {
+    setTimeout(() => {
+      console.log(i);
+    }, i * 1000);
+  }
+}
+example();
+
+
+### output - 
+
+1
+2
+3
+4
+5
+
+## 19. What is the output of below code?
+
+![alt text](image-4.png)
+
+### solution - 
+
+x is declared locally (due to var x = 21) and hoisted, so the global x = 43 is ignored inside random().
+
+Initially, x is undefined.
+
+x++ → undefined++ → results in NaN
+
+console.log(x) → outputs: NaN
+
+Then x = 21 is assigned, but too late for the earlier lines.
+
+### output - 
+
+NaN
+
+## 20. What is the output of below code?
+
+● console.log(0.1 + 0.2 = 0.3);
+● console.log(0.1 + 0.2 == 0.3);
+● console.log(0.1 + 0.2 === 0.3);
+
+### output - 
+
+1. syntax error
+2. false
+3. false
+
+## 21. Give output of following code.
+
+![alt text](image-5.png)
+
+### solution - 
+
+var i = 0 declares i using function scope (not block scope).
+
+The loop runs with i = 0, 1, 2, and then stops when i = 3.
+
+Since var is not block scoped, the variable i is still accessible outside the loop.
+
+### output - 
+
+0
+1
+2
+i outside the loop:  3
+
+## 22. Give output of following code.
+
+![alt text](image-6.png)
+
+### output - 
+
+We would get a ReferenceError because let is block-scoped.
+
+## 23. Give output of following code.
+
+![alt text](image-7.png)
+
+### solution - 
+
+var n = 6;
+
+Declares a global variable n and sets it to 6.
+
+console.log(n);
+
+Outputs: 6
+
+foo(6);
+
+Enters the function foo with n = 6.
+
+The if (n == 6) condition is true, so it declares let num = 2; inside the if block.
+
+BUT: let is block-scoped, so num exists only inside the if block.
+
+When console.log(num) is called outside the if block, it throws a ReferenceError.
+
+### output - 
+
+6
+Uncaught ReferenceError: num is not defined
+
+## 24. Give output of following code.
+
+![alt text](image-8.png)
+
+### solution - 
+
+var x;
+Declares a variable x and initializes it with undefined by default.
+
+console.log(x);
+Logs the value of x, which is undefined at this point (assignment happens later).
+
+x = 23;
+Assigns the value 23 to x after the console.log.
+
+### output -
+
+undefined
+
+## 25. Give output of following code.
+
+![alt text](image-9.png)
+
+### solution - 
+
+In JavaScript, var declarations are hoisted to the top of their scope but not the assignments. So the code is interpreted as:
+
+var x;       // hoisted declaration
+x = 23;
+console.log(x);
+
+### output - 
+
+23
 
 
 
